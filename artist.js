@@ -58,7 +58,7 @@ var Artist={
             </div>
         </div>`;
 
-        fetch(API.artist + '?id=' + id).then(function(r){return r.json();}).then(function(d){
+        fetch(API.artist + '?id=' + encodeURIComponent(id) + '&name=' + encodeURIComponent(name || '')).then(function(r){return r.json();}).then(function(d){
             if(d.status && d.result){
                 var a = d.result;
                 if(a.name) gid('artist-name').innerText = a.name;

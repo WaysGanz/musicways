@@ -1,19 +1,28 @@
 # WayssMusify
 
-Web music player (PWA) — frontend statis, siap deploy ke Vercel.
+Web music player (PWA) + backend serverless (Vercel Functions) di folder `api/`.
 
-## Deploy
-1. Push repo ini ke GitHub.
+## Sumber data
+- Lagu, artis, playlist: [Audius](https://audius.co) (lagu penuh, musisi independen)
+- Lirik: [LRCLIB](https://lrclib.net)
+
+## Deploy (Vercel)
+1. Push repo ke GitHub.
 2. Vercel → Add New → Project → pilih repo → Framework: **Other** → Deploy.
 
-## Catatan Backend
-Frontend memanggil endpoint berikut (tidak termasuk di repo ini):
+## Deploy (Netlify)
+1. Push repo ke GitHub.
+2. Netlify → Add new site → Import an existing project → pilih repo.
+3. Build command: kosongkan. Publish directory: `.` (sudah diatur di `netlify.toml`) → Deploy.
 
-`/api/search` `/api/suggest` `/api/artist` `/api/album` `/api/lyrics` `/api/ytplay` `/api/proxy-audio` `/api/proxy-image`
+Function Netlify ada di `netlify/functions` dan memakai kode yang sama dari `api/`.
 
-Tanpa backend, tampilan tetap muncul tapi pencarian & pemutaran tidak jalan.
-Jika backend ada di server lain, tambahkan di `vercel.json`:
+## Environment Variables (opsional)
+| Nama | Fungsi |
+|---|---|
+| `AUDIUS_APP_NAME` | Nama aplikasi untuk Audius (default `WayssMusify`) |
+| `AUDIUS_API_KEY` | API key Audius (jika punya) |
+| `AUDIUS_HOST` | Paksa host API tertentu |
 
-```json
-"rewrites": [{ "source": "/api/:path*", "destination": "https://BACKEND-KAMU/api/:path*" }]
-```
+## Endpoint
+`/api/search` `/api/suggest` `/api/artist` `/api/album` `/api/lyrics` `/api/ytplay` `/api/stream` `/api/proxy-audio` `/api/proxy-image`
