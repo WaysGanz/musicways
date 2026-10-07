@@ -1,0 +1,197 @@
+/* ==========================================================
+   WayssMusify — Obsidian Glow Theme
+   Dimuat setelah <style> di index.html, jadi menimpa tampilan lama
+   tanpa perlu mengubah file JS.
+   ========================================================== */
+:root {
+  --ob-0: #050409;            /* dasar paling gelap */
+  --ob-1: #0b0a12;            /* permukaan */
+  --ob-2: #12101c;            /* kartu */
+  --ob-3: #1a1728;            /* kartu hover */
+  --ob-edge: rgba(190, 170, 255, 0.10);
+  --ob-edge-hi: rgba(190, 170, 255, 0.22);
+  --glow-1: #8b5cf6;          /* violet */
+  --glow-2: #22d3ee;          /* cyan */
+  --glow-3: #e879f9;          /* magenta */
+  --glow-soft: rgba(139, 92, 246, 0.35);
+  --glow-faint: rgba(139, 92, 246, 0.14);
+  --text-primary: #f4f1ff;
+  --text-secondary: #9d97b8;
+  --bg-color: var(--ob-1);
+  --border-color: var(--ob-edge);
+  --nm-shadow-flat: 0 6px 20px rgba(0,0,0,.55), 0 0 0 1px var(--ob-edge);
+  --nm-shadow-flat-sm: 0 3px 10px rgba(0,0,0,.5), 0 0 0 1px var(--ob-edge);
+  --nm-shadow-inset: inset 0 2px 8px rgba(0,0,0,.6);
+  --nm-shadow-inset-sm: inset 0 1px 5px rgba(0,0,0,.6);
+}
+
+html, body { background: var(--ob-0) !important; color: var(--text-primary); }
+::selection { background: rgba(139,92,246,.45); color: #fff; }
+
+/* ---------- Latar: obsidian + cahaya ambient ---------- */
+.app-bg {
+  background:
+    radial-gradient(60% 45% at 12% 0%, rgba(139,92,246,.20) 0%, transparent 70%),
+    radial-gradient(50% 40% at 100% 18%, rgba(34,211,238,.10) 0%, transparent 70%),
+    radial-gradient(70% 50% at 50% 115%, rgba(232,121,249,.14) 0%, transparent 70%),
+    linear-gradient(180deg, #07060d 0%, #050409 100%) !important;
+}
+
+/* ---------- Splash ---------- */
+#splash-screen {
+  background: radial-gradient(circle at 50% 42%, #1b1433 0%, #07060d 62%) !important;
+}
+.splash-logo-wrap {
+  border: 1px solid var(--ob-edge-hi) !important;
+  background: #07060d !important;
+  box-shadow: 0 0 0 6px rgba(139,92,246,.07), 0 0 40px rgba(139,92,246,.55), 0 0 90px rgba(34,211,238,.18) !important;
+  animation: obPulse 2.6s ease-in-out infinite;
+}
+.splash-sub { color: #8a83ad !important; }
+.splash-bar { background: rgba(190,170,255,.14) !important; }
+.splash-bar i { background: linear-gradient(90deg, transparent, var(--glow-1), var(--glow-2), transparent) !important; }
+@keyframes obPulse {
+  0%,100% { box-shadow: 0 0 0 6px rgba(139,92,246,.07), 0 0 34px rgba(139,92,246,.45), 0 0 80px rgba(34,211,238,.14); }
+  50%     { box-shadow: 0 0 0 10px rgba(139,92,246,.10), 0 0 56px rgba(139,92,246,.75), 0 0 110px rgba(34,211,238,.26); }
+}
+
+/* ---------- Teks gradien judul ---------- */
+.chrome-text {
+  background: linear-gradient(95deg, #ffffff 0%, #d9ccff 45%, #8be9fb 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  filter: drop-shadow(0 0 14px rgba(139,92,246,.45));
+}
+
+/* ---------- Kartu / glass (obsidian kaca hitam) ---------- */
+.glass-card, .glass, .glass-strong,
+[class*="bg-[#20222c]"], [class*="bg-[#121318]"], [class*="bg-[#181922]"], [class*="bg-[#1a1b22]"], [class*="bg-[#1a1a1a]"] {
+  background:
+    linear-gradient(155deg, rgba(255,255,255,.045) 0%, rgba(255,255,255,0) 38%),
+    linear-gradient(180deg, var(--ob-2), var(--ob-1)) !important;
+  border: 1px solid var(--ob-edge) !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+.glass-card:hover, .glass-hover:hover,
+[class*="hover:bg-[#282b38]"]:hover {
+  background:
+    linear-gradient(155deg, rgba(139,92,246,.14) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, var(--ob-3), var(--ob-2)) !important;
+  border-color: var(--ob-edge-hi) !important;
+  box-shadow: 0 12px 34px rgba(0,0,0,.6), 0 0 22px var(--glow-faint), inset 0 1px 0 rgba(255,255,255,.07) !important;
+}
+/* item lagu yang sedang aktif / dijeda */
+[class*="bg-[#343a4e]"] {
+  background: linear-gradient(120deg, rgba(139,92,246,.30), rgba(34,211,238,.10) 70%), var(--ob-2) !important;
+  border: 1px solid rgba(167,139,250,.55) !important;
+  box-shadow: 0 0 24px rgba(139,92,246,.35), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+[class*="bg-[#2e3344]"] {
+  background: linear-gradient(120deg, rgba(139,92,246,.18), rgba(34,211,238,.05) 70%), var(--ob-2) !important;
+  border: 1px solid rgba(167,139,250,.38) !important;
+  box-shadow: 0 0 16px rgba(139,92,246,.22) !important;
+}
+
+/* ---------- Dock navigasi ---------- */
+.glass-dock {
+  background: linear-gradient(180deg, rgba(24,20,40,.88), rgba(9,8,16,.92)) !important;
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  border: 1px solid var(--ob-edge-hi) !important;
+  box-shadow: 0 16px 44px rgba(0,0,0,.75), 0 0 36px rgba(139,92,246,.16), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+.nav-blur {
+  background: rgba(9,8,16,.92) !important;
+  border-top: 1px solid var(--ob-edge) !important;
+}
+/* tombol nav aktif */
+.nav-item.bg-white\/20 {
+  background: linear-gradient(135deg, rgba(139,92,246,.45), rgba(34,211,238,.18)) !important;
+  box-shadow: 0 0 18px rgba(139,92,246,.55), inset 0 1px 0 rgba(255,255,255,.18) !important;
+  color: #fff !important;
+}
+.nav-item.bg-white\/20 i, .nav-item.bg-white\/20 svg { filter: drop-shadow(0 0 6px rgba(196,181,253,.9)); }
+
+/* ---------- Tombol ---------- */
+.btn-chrome {
+  background: linear-gradient(180deg, rgba(139,92,246,.20), rgba(139,92,246,.06)), var(--ob-2) !important;
+  border: 1px solid rgba(167,139,250,.30) !important;
+  box-shadow: 0 0 14px rgba(139,92,246,.18), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+.btn-chrome:hover { box-shadow: 0 0 24px rgba(139,92,246,.45), inset 0 1px 0 rgba(255,255,255,.12) !important; }
+.filter-tab.active {
+  background: linear-gradient(135deg, #8b5cf6, #22d3ee) !important;
+  color: #07060d !important;
+  box-shadow: 0 0 22px rgba(139,92,246,.6) !important;
+  border-color: transparent !important;
+}
+/* tombol play putih -> glow ungu */
+button.bg-white, .bg-white.text-black, [class*="bg-white "][class*="text-black"] {
+  background: linear-gradient(135deg, #f5f0ff 0%, #c4b5fd 100%) !important;
+  color: #0b0a12 !important;
+  box-shadow: 0 0 22px rgba(139,92,246,.65), 0 0 48px rgba(139,92,246,.25) !important;
+}
+#full-play-btn-wrap { box-shadow: 0 0 30px rgba(139,92,246,.8), 0 0 70px rgba(34,211,238,.25) !important; }
+
+/* ---------- Input ---------- */
+.glass-input, input[type="text"], input[type="search"] {
+  background: rgba(10,9,18,.9) !important;
+  border: 1px solid var(--ob-edge) !important;
+  color: #f4f1ff;
+}
+.glass-input:focus-within, .glass-input:focus, input:focus {
+  border-color: rgba(167,139,250,.6) !important;
+  box-shadow: 0 0 0 3px rgba(139,92,246,.18), 0 0 22px rgba(139,92,246,.35) !important;
+  outline: none;
+}
+
+/* ---------- Progress bar & slider ---------- */
+#full-progress, #mini-progress {
+  background: linear-gradient(90deg, #8b5cf6, #22d3ee) !important;
+  box-shadow: 0 0 14px rgba(139,92,246,.9), 0 0 28px rgba(34,211,238,.35);
+}
+#mini-circle-progress { stroke: #a78bfa !important; filter: drop-shadow(0 0 5px rgba(139,92,246,.95)); }
+.eq-bar { background: linear-gradient(to top, #8b5cf6, #22d3ee) !important; box-shadow: 0 0 8px rgba(139,92,246,.7); }
+.eq-slider::-webkit-slider-thumb { border-color: rgba(167,139,250,.7) !important; box-shadow: 0 0 12px rgba(139,92,246,.8) !important; }
+
+/* ---------- Warna teks abu-abu -> lavender ---------- */
+[class*="text-[#a0a5b0]"], [class*="text-[#b3b3b3]"], [class*="text-[#cfd3d8]"] { color: #a39dc2 !important; }
+[class*="text-[#6b7280]"], [class*="text-[#4b5563]"] { color: #6f6a8d !important; }
+[class*="border-[#cfd3d8]"] { border-color: #a78bfa !important; }
+[class*="bg-[#cfd3d8]"] { background: #a78bfa !important; }
+
+/* ---------- Border putih tipis -> tepi ungu halus ---------- */
+.border-white\/10, .border-white\/5, .border-white\/20 { border-color: var(--ob-edge) !important; }
+.border-white\/30, .border-white\/40, .border-white\/60 { border-color: rgba(167,139,250,.5) !important; }
+.bg-white\/5  { background-color: rgba(139,92,246,.07) !important; }
+.bg-white\/10 { background-color: rgba(139,92,246,.12) !important; }
+.bg-white\/20 { background-color: rgba(139,92,246,.22) !important; }
+
+/* ---------- Modal / overlay ---------- */
+.bg-black\/60, .bg-black\/80, .bg-black\/85 { background-color: rgba(4,3,9,.82) !important; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+[class*="from-[#14151a]"], [class*="from-[#050507]"], [class*="via-[#050507]"], [class*="via-[#14151a]"] { --tw-gradient-from: #050409; --tw-gradient-via: rgba(5,4,9,.6); }
+#artist-modal, #album-modal { background: radial-gradient(70% 40% at 50% 0%, rgba(139,92,246,.20), transparent 70%), #07060d !important; }
+
+/* ---------- Player penuh & lirik ---------- */
+.player-bg-container, #lyrics-overlay { background-color: #05040a !important; }
+.player-bg-vignette {
+  background: linear-gradient(to bottom, rgba(5,4,9,.55) 0%, rgba(5,4,9,.2) 45%, rgba(5,4,9,.88) 100%) !important;
+}
+#full-cover { box-shadow: 0 20px 60px rgba(0,0,0,.7), 0 0 50px rgba(139,92,246,.35); border-color: var(--ob-edge-hi) !important; }
+.lyric-line.active-lyric, .inline-lyric-line.active-lyric {
+  color: #fff !important;
+  text-shadow: 0 0 18px rgba(167,139,250,.95), 0 0 42px rgba(139,92,246,.55);
+}
+.lyric-line, .inline-lyric-line { color: rgba(200,190,235,.38); }
+
+/* ---------- Cover & artis ---------- */
+img.artist-photo { border: 2px solid rgba(167,139,250,.55) !important; box-shadow: 0 0 28px rgba(139,92,246,.55) !important; }
+.search-song-item img, .group img { transition: box-shadow .3s ease, transform .3s ease; }
+.search-song-item:hover img { box-shadow: 0 0 18px rgba(139,92,246,.5); }
+
+/* ---------- Scrollbar tipis ---------- */
+* { scrollbar-width: thin; scrollbar-color: rgba(139,92,246,.45) transparent; }
+
+/* ---------- Kurangi efek berat bila perangkat meminta ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .splash-logo-wrap { animation: none; }
+}
