@@ -11,7 +11,7 @@ var Profile = {
                 <i data-lucide="music" class="w-12 h-12 text-white/60 absolute"></i>
                 <img src="/logo.png" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'" />
             </div>
-            <h1 class="text-3xl font-black chrome-text mb-1">WayssMusify</h1>
+            <h1 class="text-3xl font-black chrome-text mb-1">khusnizyy music</h1>
             <p class="text-[#b3b3b3] text-sm mb-6">Streaming Musik YouTube dengan Lirik</p>
             
             <div class="glass rounded-2xl p-5 max-w-sm mx-auto space-y-3 text-left mb-6">
